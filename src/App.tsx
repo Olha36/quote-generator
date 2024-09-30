@@ -1,6 +1,8 @@
 import './App.css';
 import '../src/css/card.css';
 
+// https://api.api-ninjas.com/v1/quotes
+
 function App() {
   return (
     <div className='wrapper'>
@@ -9,8 +11,8 @@ function App() {
           <h1 className='header'>Random Quote Generator</h1>
 
           <div className='quote-card'>
-            <p className='quote-text'>"Random quote generator text goes here."</p>
-            <p className='quote-author'>- Author Name</p>
+            <p className='quote-text'>"Quote"</p>
+            <p className='quote-author'>- Author</p>
           </div>
 
           <div className='cards-below'>
@@ -25,10 +27,9 @@ function App() {
                 />
                 <div className='card__content | flow'>
                   <div className='card__content--container | flow'>
-                    <h2 className='card__title'>Colombia</h2>
+                    <h2 className='card__title'>Hover to see a quote</h2>
                     <p className='card__description'>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum in labore
-                      laudantium deserunt fugiat numquam.
+                      Quote
                     </p>
                   </div>
                   <button className='card__button'>Add to favourites</button>
