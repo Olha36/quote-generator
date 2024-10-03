@@ -1,6 +1,9 @@
-export default function NextButton() {
+interface NextButtonProps {
+  onClick: () => void;
+}
+export default function NextButton({ onClick }: NextButtonProps) {
   return (
-    <button className='next'>
+    <button className='next' onClick={onClick}>
       <a className='cta' href='#'>
         <span>NEXT</span>
         <span>

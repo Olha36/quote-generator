@@ -5,6 +5,10 @@ import Quotes from './components/fetchQuotes';
 import '../src/css/nextButton.css';
 import NextButton from './components/nextButton';
 
+function handleNextButtonClick() {
+  console.log('Next button clicked');
+}
+
 function App() {
   return (
     <div className='wrapper'>
@@ -14,7 +18,7 @@ function App() {
 
           <div className='quote-card'>
             <Quotes />
-            <NextButton />
+            <NextButton onClick={handleNextButtonClick} />
           </div>
 
           <Cards />
