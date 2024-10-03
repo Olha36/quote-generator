@@ -10,7 +10,11 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+button {
+  background: transparent;
+  border: none;
+  color: transparent;
+}
 .wrapper {
   display: flex;
   justify-content: center;
@@ -59,7 +63,6 @@ span:nth-child(2) {
   top: 12%;
 }
 
-/**************SVG****************/
 
 path.one {
   transition: 0.4s;
@@ -85,7 +88,6 @@ path.two {
   animation: color_anim 1s infinite 0.4s;
 }
 
-/* SVG animations */
 
 @keyframes color_anim {
   0% {

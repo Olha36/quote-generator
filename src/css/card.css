@@ -82,6 +82,7 @@ h2 {
   font-family: var(--font-title);
   font-size: 1.125rem;
   color: var(--black);
+  margin: 5rem auto;
 }
 
 .card__button:focus {
@@ -89,6 +90,9 @@ h2 {
   outline-offset: -5px;
 }
 
+.cards-below {
+  margin-top: 3rem;
+}
 @media (any-hover: hover) and (any-pointer: fine) {
   .card__content {
     transform: translateY(62%);

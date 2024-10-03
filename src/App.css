@@ -29,8 +29,8 @@
 .cachet {
   z-index: 2;
   position: absolute;
-  bottom: 5%;
-  right: 9%;
+  top: 93%;
+  right: 14%;
   width: calc((100vw* 5) / 42);
   height: auto;
 }
