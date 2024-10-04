@@ -2,7 +2,7 @@
 
 1. `Handle State for Current Quote`
 
-- You need to track the currently displayed quote. Since you've already fetched multiple quotes and stored them in an array, now you'll need to manage which quote is currently shown.
+- track the currently displayed quote. For that I'll need to manage which quote is currently shown:
 - Add a state variable to store the index of the current quote (e.g., currentQuoteIndex).
 
 2. `Update the Quote on Button Click`
