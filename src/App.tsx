@@ -6,33 +6,42 @@ import '../src/css/nextButton.css';
 import NextButton from './components/nextButton';
 import { useState, useEffect } from 'react';
 
-const url = 'https://api.api-ninjas.com/v1/quotes';
+const url = 'https://api.api-ninjas.com/v1/quotes?category=inspirational'; // Example category
 
 function App() {
   const [quotes, setQuotes] = useState<{ quote: string; author: string }[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
 
+  console.log('current index is', currentQuoteIndex);
+
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
-        const response = await fetch(url, {
-          headers: {
-            'X-Api-Key': '+N8VDmi3IPpD6ygKcZzhoA==cD7b1gv1GcElTiR6',
-          },
-        });
+        const quotesArray: { quote: string; author: string }[] = [];
 
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
+        // Fetch 10 quotes by making 10 API calls
+        for (let i = 0; i < 10; i++) {
+          const response = await fetch(url, {
+            headers: {
+              'X-Api-Key': '+N8VDmi3IPpD6ygKcZzhoA==cD7b1gv1GcElTiR6', // Replace with your actual API key
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          if (data && data[0]) {
+            quotesArray.push(data[0]); // Add the quote to the array
+          } else {
+            throw new Error('Unexpected API response format');
+          }
         }
 
-        const data = await response.json();
-
-        if (Array.isArray(data)) {
-          setQuotes(data);
-        } else {
-          throw new Error('Unexpected API response format');
-        }
+        setQuotes(quotesArray);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
@@ -46,8 +55,10 @@ function App() {
   }, []);
 
   function handleNextButtonClick() {
-    setCurrentQuoteIndex((prevIndex) => (prevIndex + 1 >= quotes.length ? 0 : prevIndex + 1));
-    console.log('hi');
+    setCurrentQuoteIndex((prevIndex) => {
+      console.log('Previous index:', prevIndex);
+      return prevIndex + 1 >= quotes.length ? 0 : prevIndex + 1;
+    });
   }
 
   return (
