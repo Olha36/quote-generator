@@ -1,6 +1,6 @@
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import '../src/css/card.css';
 import './App.css';
 import Cards from './components/cards';
@@ -22,6 +22,12 @@ interface ApiQuote {
 function App() {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+
+  const handleChangeClick = (e: ChangeEvent<unknown>, p: number) => {
+    console.log(e, p);
+    setPage(p);
+  };
 
   useEffect(() => {
     const fetchQuotes = async () => {
@@ -77,9 +83,10 @@ function App() {
           </div>
 
           <Cards />
-            <Stack spacing={2} >
-            <Pagination count={10} color='secondary' />
-            </Stack>
+          <h2>Current page is {page}</h2>
+          <Stack spacing={2}>
+            <Pagination count={10} color='secondary' onChange={handleChangeClick} />
+          </Stack>
         </div>
       </div>
       <p className='cachet'>
