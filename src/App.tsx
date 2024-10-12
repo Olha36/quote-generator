@@ -12,6 +12,11 @@ interface Quote {
   author: string;
 }
 
+interface ApiQuote {
+  q: string;
+  a: string;
+}
+
 function App() {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -25,11 +30,15 @@ function App() {
           throw new Error(`Error: ${response.status}`);
         }
 
-        const data = await response.json();
-        console.log(data); // Log the fetched data
+        const data: ApiQuote[] = await response.json();
+        console.log('Fetched data:', data); // Log the fetched data
 
         if (Array.isArray(data) && data.length > 0) {
-          setQuotes(data); // Set all fetched quotes
+          const formattedQuotes = data.map((item: ApiQuote) => ({
+            quote: item.q,
+            author: item.a,
+          }));
+          setQuotes(formattedQuotes); // Set all fetched quotes
         } else {
           throw new Error('Unexpected API response format');
         }
