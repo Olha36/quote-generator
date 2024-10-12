@@ -1,9 +1,11 @@
-import './App.css';
+import { useEffect, useState } from 'react';
 import '../src/css/card.css';
+import './App.css';
 import Cards from './components/cards';
-import { useState, useEffect } from 'react';
 
-const url = 'https://api.api-ninjas.com/v1/quotes?category=inspirational'; // Fetch 10 quotes at once
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const targetUrl = 'https://zenquotes.io/api/quotes';
+const url = proxyUrl + targetUrl; // Use proxy to bypass CORS
 
 interface Quote {
   quote: string;
@@ -17,19 +19,16 @@ function App() {
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
-        const response = await fetch(url, {
-          headers: {
-            'X-Api-Key': '+N8VDmi3IPpD6ygKcZzhoA==cD7b1gv1GcElTiR6', // Replace with your actual API key
-          },
-        });
+        const response = await fetch(url);
 
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
         }
 
-        const data: Quote[] = await response.json();
+        const data = await response.json();
+        console.log(data); // Log the fetched data
 
-        if (data && data.length > 0) {
+        if (Array.isArray(data) && data.length > 0) {
           setQuotes(data); // Set all fetched quotes
         } else {
           throw new Error('Unexpected API response format');
