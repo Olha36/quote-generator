@@ -1,9 +1,11 @@
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 import { useEffect, useState } from 'react';
 import '../src/css/card.css';
 import './App.css';
 import Cards from './components/cards';
 
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // need to request temporary request
 const targetUrl = 'https://zenquotes.io/api/quotes';
 const url = proxyUrl + targetUrl; // Use proxy to bypass CORS
 
@@ -75,6 +77,9 @@ function App() {
           </div>
 
           <Cards />
+            <Stack spacing={2} >
+            <Pagination count={10} color='secondary' />
+            </Stack>
         </div>
       </div>
       <p className='cachet'>

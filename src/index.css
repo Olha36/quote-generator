@@ -13,9 +13,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 body {
-  font: var(--fontSize)/200% 'Bilbo Swash Caps', cursive;
+  font: var(--fontSize) / 200% 'Bilbo Swash Caps', cursive;
   background-image: url('https://images.unsplash.com/photo-1546484396-fb3fc6f95f98');
   background-size: cover;
   background-position: center;
@@ -38,18 +37,10 @@ p {
   font-size: 1rem;
   line-height: 1.5;
 }
+.MuiPagination-ul {
+  justify-content: center;
+}
 
-/* button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-} */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -58,7 +49,4 @@ p {
   a:hover {
     color: #747bff;
   }
-  /* button {
-    background-color: #f9f9f9;
-  } */
 }
