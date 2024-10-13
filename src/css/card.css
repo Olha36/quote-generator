@@ -85,12 +85,17 @@ h2 {
   font-family: var(--font-title);
   font-size: 1.125rem;
   color: var(--black);
+  
   /* margin: 5rem auto; */
 }
 
 .card__button:focus {
   outline: 2px solid black;
   outline-offset: -5px;
+}
+.card__button:hover {
+  background-color: hsl(54, 93%, 64%);
+  box-shadow: 1px 1px 25px 3px #fff800;
 }
 
 .cards-below {
