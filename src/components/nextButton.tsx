@@ -1,3 +1,4 @@
+import '../css/nextButton.css';
 interface NextButtonProps {
   onClick: () => void;
 }

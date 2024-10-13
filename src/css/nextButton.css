@@ -22,6 +22,8 @@ button {
 
 .cta {
   display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
   padding: 10px 45px;
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
@@ -31,11 +33,13 @@ button {
   transition: 1s;
   box-shadow: 6px 6px 0 black;
   transform: skewX(-15deg);
+  margin-top: 1rem; /* Add some space above the button */
 }
 
 .cta:focus {
   outline: none;
 }
+
 
 .cta:hover {
   transition: 0.5s;
@@ -63,7 +67,6 @@ span:nth-child(2) {
   top: 12%;
 }
 
-
 path.one {
   transition: 0.4s;
   transform: translateX(-60%);
@@ -87,7 +90,6 @@ path.two {
   transform: translateX(0%);
   animation: color_anim 1s infinite 0.4s;
 }
-
 
 @keyframes color_anim {
   0% {

@@ -4,7 +4,6 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import '../src/css/card.css';
 import './App.css';
 import Cards from './components/cards';
-
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // need to request temporary request
 const targetUrl = 'https://zenquotes.io/api/quotes';
 const url = proxyUrl + targetUrl; // Use proxy to bypass CORS
@@ -81,7 +80,9 @@ function App() {
                 <div className='quote-card'>
                   <p>"{currentQuote.quote}"</p>
                   <p>- {currentQuote.author}</p>
+                  <button className='card__button'>Add to favourites</button>
                 </div>
+                
               )
             )}
           </div>

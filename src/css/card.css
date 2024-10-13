@@ -16,13 +16,15 @@ h2 {
 .card {
   display: grid;
   place-items: center;
-
-  max-width: 17rem;
-  height: 24rem;
+  max-width: 22rem; /* Increase width to fit button comfortably */
+  height: 28rem; /* Slightly increase height */
+  padding: 1.5rem; /* Add padding inside the card */
   overflow: hidden;
   border-radius: 0.625rem;
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+  background-color: #fff; /* Optional: Add background color */
 }
+
 
 .card > * {
   grid-column: 1 / 2;
@@ -71,6 +73,7 @@ h2 {
 }
 
 .card__button {
+  cursor: pointer;
   padding: 0.75em 1.6em;
   width: fit-content;
   width: -moz-fit-content;
@@ -82,7 +85,7 @@ h2 {
   font-family: var(--font-title);
   font-size: 1.125rem;
   color: var(--black);
-  margin: 5rem auto;
+  /* margin: 5rem auto; */
 }
 
 .card__button:focus {
@@ -114,7 +117,7 @@ h2 {
 
   .card__content--container > :not(.card__title),
   .card__button {
-    opacity: 0;
+    /* opacity: 0; */
     transition: transform 500ms ease-out, opacity 500ms ease-out;
   }
 
