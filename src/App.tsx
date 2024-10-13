@@ -23,6 +23,7 @@ function App() {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
+  const quotesPerPage = 1;
 
   const handleChangeClick = (e: ChangeEvent<unknown>, p: number) => {
     console.log(e, p);
@@ -62,6 +63,9 @@ function App() {
     fetchQuotes();
   }, []);
 
+  const indexOfQuote = (page - 1) * quotesPerPage;
+  const currentQuote = quotes[indexOfQuote];
+
   return (
     <div className='wrapper'>
       <div id='parchment'>
@@ -73,19 +77,25 @@ function App() {
               <p>Error: {error}</p>
             ) : (
               // Render all quotes
-              quotes.map((quote, index) => (
-                <div key={index} className='quote-card'>
-                  <p>"{quote.quote}"</p>
-                  <p>- {quote.author}</p>
+              currentQuote && ( // Render the current quote only
+                <div className='quote-card'>
+                  <p>"{currentQuote.quote}"</p>
+                  <p>- {currentQuote.author}</p>
                 </div>
-              ))
+              )
             )}
           </div>
 
           <Cards />
-          <h2>Current page is {page}</h2>
+
           <Stack spacing={2}>
-            <Pagination count={10} color='secondary' onChange={handleChangeClick} />
+            {/* Set pagination with total number of quotes */}
+            <Pagination
+              count={Math.ceil(quotes.length / quotesPerPage)} // Calculate total number of pages
+              page={page}
+              color='secondary'
+              onChange={handleChangeClick}
+            />
           </Stack>
         </div>
       </div>
