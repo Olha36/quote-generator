@@ -1,6 +1,6 @@
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import '../src/css/card.css';
 import './App.css';
 import Cards from './components/cards';
@@ -16,6 +16,40 @@ interface Quote {
 interface ApiQuote {
   q: string;
   a: string;
+}
+
+interface HandleFavoriteProps {
+  isFavorite: boolean;
+}
+interface HandleFavoriteState {
+  isFavorite: boolean;
+}
+
+class HandleFavorite extends React.Component<HandleFavoriteProps, HandleFavoriteState> {
+  constructor(props: HandleFavoriteProps) {
+    super(props);
+
+    this.state = {
+      isFavorite: false,
+    };
+  }
+
+  render() {
+    return (
+      <div className='button_container'>
+        <button
+          className='card__button'
+          onClick={() => {
+            this.setState({ isFavorite: !this.state.isFavorite });
+          }}
+        >
+          {this.state.isFavorite ? 'Added to favourites ☺️' : 'Add to favourites'}
+        </button>
+
+        <button className='card__button margin_left'>Next</button>
+      </div>
+    );
+  }
 }
 
 function App() {
@@ -80,9 +114,8 @@ function App() {
                 <div className='quote-card'>
                   <p>"{currentQuote.quote}"</p>
                   <p>- {currentQuote.author}</p>
-                  <button className='card__button'>Add to favourites</button>
+                  <HandleFavorite isFavorite={false} />
                 </div>
-                
               )
             )}
           </div>

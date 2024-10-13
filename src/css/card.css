@@ -101,6 +101,9 @@ h2 {
 .cards-below {
   margin-top: 3rem;
 }
+.margin_left {
+  margin-left: 1rem;
+}
 @media (any-hover: hover) and (any-pointer: fine) {
   .card__content {
     transform: translateY(62%);
